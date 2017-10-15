@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottomOne"
+        android:title="Smart Phones"
+        android:icon="@drawable/ic_smartphone_black_24dp"
+        >
+
+    </item>
+
+    <item
+        android:id="@+id/bottomTwo"
+        android:title="Accessories"
+        android:icon="@drawable/ic_headset_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/bottomThree"
+        android:title="Fashion"
+        android:icon="@drawable/ic_accessibility_black_24dp">
+
+    </item>
+
+    <item
+        android:id="@+id/bottomFour"
+        android:title="Sports"
+        android:icon="@drawable/ic_fitness_center_black_24dp">
+
+    </item>
+
+
+
+</menu>

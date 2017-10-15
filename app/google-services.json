@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "858739567342",
+    "firebase_url": "https://firedeals-a11cc.firebaseio.com",
+    "project_id": "firedeals-a11cc",
+    "storage_bucket": "firedeals-a11cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858739567342:android:4d112e04df4625fa",
+        "android_client_info": {
+          "package_name": "com.enterprise.bfire.firedeals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858739567342-8h19hth83os2qpaijso749ki2tqeuosr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFyyKyUnoM4dUmWnk6S91yFeTiByFx3Kw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
