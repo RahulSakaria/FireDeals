@@ -92,7 +92,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, ProductDetails.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("productName",cardItem.getProductName());
+                intent.putExtra("category",cardItem.getProductType());
+                intent.putExtra("price",cardItem.getPrice());
+                intent.putExtra("pros1",cardItem.getPros1());
+                intent.putExtra("pros2",cardItem.getPros2());
+                intent.putExtra("pros3",cardItem.getPros3());
+                intent.putExtra("cons1",cardItem.getCons1());
+                intent.putExtra("cons2",cardItem.getCons2());
+                intent.putExtra("cons3",cardItem.getCons3());
+                intent.putExtra("affiliateLink",cardItem.getAffiliateLink());
+                intent.putExtra("imageLink",cardItem.getImageLink());
+                context.startActivity(intent);
             }
         });
         holder.currentItem = cardItems.get(position);
