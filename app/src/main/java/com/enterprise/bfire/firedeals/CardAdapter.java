@@ -1,17 +1,14 @@
 package com.enterprise.bfire.firedeals;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -34,7 +31,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private Context context;
     private LayoutInflater inflater;
     private int resource;
-    public CardAdapter(Context context,int resource,List<CardItem> objects) {
+
+    public CardAdapter(Context context, int resource, List<CardItem> objects) {
         this.context = context;
         this.resource = resource;
         cardItems = objects;
@@ -75,22 +73,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             }
         });
         holder.productName.setText(cardItem.getProductName());
-        holder.productType.setText(cardItem.getProductType());
-        holder.price.setText("Price:"+" ₹"+cardItem.getPrice());
-        holder.pros1.setText("1."+cardItem.getPros1());
-        holder.pros2.setText("2. "+cardItem.getPros2());
-        holder.pros3.setText("3. "+cardItem.getPros3());
-        holder.cons1.setText("1. "+cardItem.getCons1());
-        holder.cons2.setText("2. "+cardItem.getCons2());
-        holder.cons3.setText("3. "+cardItem.getCons3());
+        holder.price.setText("Price:" + " ₹" + cardItem.getPrice());
         holder.buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = cardItems.get(position).getAffiliateLink().toString();
+                try {
+                    Uri uri = Uri.parse(url); // missing 'http://' will cause crashed
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    System.out.print(e);
+                }
 
-                Uri uri = Uri.parse(url); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                context.startActivity(intent);
+
+            }
+        });
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         holder.currentItem = cardItems.get(position);
@@ -101,13 +103,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         return cardItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView productImage;
-        public TextView productName,productType,price,pros1,pros2,pros3,cons1,cons2,cons3;
+        public TextView productName, price;
         public View view;
         public Button buyNow;
         public CardItem currentItem;
+        public RelativeLayout relativeLayout;
 
 
         public ViewHolder(View itemView) {
@@ -115,15 +118,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             progressBar = itemView.findViewById(R.id.progress_bar_card);
             productImage = itemView.findViewById(R.id.product_card_image);
             productName = itemView.findViewById(R.id.product_name_card);
-            productType = itemView.findViewById(R.id.product_type_card);
             buyNow = itemView.findViewById(R.id.buy_now_button_card);
             price = itemView.findViewById(R.id.product_price_card);
-            pros1 = itemView.findViewById(R.id.product_pros1_card);
-            pros2 = itemView.findViewById(R.id.product_pros2_card);
-            pros3 = itemView.findViewById(R.id.product_pros3_card);
-            cons1 = itemView.findViewById(R.id.product_cons1_card);
-            cons2 = itemView.findViewById(R.id.product_cons2_card);
-            cons3 = itemView.findViewById(R.id.product_cons3_card);
+            relativeLayout = itemView.findViewById(R.id.relative_layout_cards);
             view = itemView;
         }
     }
